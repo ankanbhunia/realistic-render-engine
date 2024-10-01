@@ -1,0 +1,22 @@
+{
+    "render_parameters": {
+        "render_tile_x":112,
+        "render_tile_y":112,
+        "resolution_x":256,
+        "resolution_y":256,
+        "use_denoising":true,
+        "use_persistent_data":true,
+        "use_save_buffers":true,
+        "samples":128,
+        "use_spatial_splits":true,
+        "max_bounces":10,
+        "min_bounces":2,
+        "use_caustics_reflective":true,
+        "use_caustics_refractive":true
+    },
+    "camera_parameters":{
+       "focal_length":30,
+       "sensor_height":36,
+       "sensor_width":36
+    }
+}
