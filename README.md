@@ -113,6 +113,8 @@ render_func.render_photorealistic_object_with_blender(
 **Output:**
 ![preview](./figures/photo.png)
 
+---
+
 ### `render_func.render_untextured_object_with_blender`
 
 This function renders 3D objects without textures from multiple camera angles. It supports different output modes such as lineart, textureless, and depth maps. Each mode is rendered in a separate Blender process for isolation.
@@ -188,6 +190,7 @@ render_func.render_untextured_object_with_blender(
 ![preview](./figures/mesh.png)
 ![preview](./figures/depth.png)
 
+---
 
 #### `render_func.render_segmentation_object_with_blender`
 
@@ -250,6 +253,8 @@ render_func.render_segmentation_object_with_blender(
 ```
 **Output:**
 ![preview](./figures/seg.png)
+
+---
 
 ### `render_func.create_render_json`
 
