@@ -1,0 +1,29 @@
+{
+    "authors": [],
+    "category": "Terracotta",
+    "description": "",
+    "height_factor": 0.022099999710917473,
+    "height_mean": 0.5551000237464905,
+    "license": "CC0",
+    "link": "https://www.ambientcg.com/view?id=GlazedTerracotta001",
+    "maps": [
+        "basecolor",
+        "diffuse",
+        "displacement",
+        "height",
+        "metallic",
+        "normal",
+        "roughness",
+        "specular"
+    ],
+    "method": "procedural",
+    "name": "Glazed Terracotta 001",
+    "physical_size": "nan",
+    "source": "ambientcg",
+    "stationary": false,
+    "tags": [
+        "glazed",
+        "terracotta"
+    ],
+    "version_date": "2023-10-31"
+}

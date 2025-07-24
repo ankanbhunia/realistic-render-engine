@@ -1,0 +1,32 @@
+{
+    "authors": [],
+    "category": "Wood",
+    "description": "",
+    "height_factor": 9.999999747378752e-05,
+    "height_mean": 0.7675999999046326,
+    "license": "CC0",
+    "link": "https://www.ambientcg.com/view?id=Wood082B(Used)",
+    "maps": [
+        "basecolor",
+        "diffuse",
+        "displacement",
+        "height",
+        "metallic",
+        "normal",
+        "roughness",
+        "specular"
+    ],
+    "method": "procedural",
+    "name": "Wood 082 B (Used)",
+    "physical_size": "nan",
+    "source": "ambientcg",
+    "stationary": false,
+    "tags": [
+        "old",
+        "orange",
+        "used",
+        "wood",
+        "wooden"
+    ],
+    "version_date": "2023-10-31"
+}

@@ -1,0 +1,29 @@
+{
+    "authors": [],
+    "category": "Marble",
+    "description": "",
+    "height_factor": 9.999999747378752e-05,
+    "height_mean": 0.8084999918937683,
+    "license": "CC0",
+    "link": "https://www.ambientcg.com/view?id=Granite005A",
+    "maps": [
+        "basecolor",
+        "diffuse",
+        "displacement",
+        "height",
+        "metallic",
+        "normal",
+        "roughness",
+        "specular"
+    ],
+    "method": "procedural",
+    "name": "Granite 005 A",
+    "physical_size": "nan",
+    "source": "ambientcg",
+    "stationary": true,
+    "tags": [
+        "countertop",
+        "granite"
+    ],
+    "version_date": "2023-10-31"
+}
