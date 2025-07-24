@@ -7,7 +7,7 @@ To set up the rendering environment, follow these steps:
 1.  **Clone the repository**:
     ```bash
     git clone https://github.com/ankanbhunia/realistic-render-engine.git
-    cd Blender-Render-Engine
+    cd realistic-render-engine
     ```
 
 2.  **Create and activate a Conda environment**:
