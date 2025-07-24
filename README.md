@@ -34,12 +34,9 @@ To set up the rendering environment, follow these steps:
     │   ├── ... (other Blender files)
     ├── assets/
     ├── utils/
-    ├── install.sh
     ├── README.md
-    ├── requirements.txt
-    ├── render_object.py
-    ├── render_func.py
-    └── DOCUMENTATION.md (this file)
+    ├── (other files)
+
     ```
 
 ## 2. Usage
