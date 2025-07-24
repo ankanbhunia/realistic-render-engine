@@ -1,3 +1,4 @@
+
 # Blender Render Engine Documentation
 
 ## 1. Installation
@@ -302,5 +303,55 @@ def create_render_json(
 *   `init_dict` (dict, optional): A dictionary containing default rendering and camera parameters. If `None`, a default set of parameters (e.g., resolution, samples, bounces) will be used.
 *   `seed` (int, optional): A random seed for reproducible camera sampling.
 
-**Returns:**
-*   `dict`: A dictionary representing the complete JSON structure ready for rendering.
+**`init_dict` Explanation and Usage:**
+
+The `init_dict` parameter is an optional dictionary that allows you to override the default rendering and camera parameters used by the Blender render engine. If `init_dict` is not provided (i.e., it's `None`), the function uses a predefined set of default values.
+
+The `init_dict` contains two main keys:
+
+1.  **`render_parameters`**: This dictionary holds settings related to the rendering process itself.
+    *   `render_tile_x` (int): The horizontal size of render tiles.
+    *   `render_tile_y` (int): The vertical size of render tiles.
+    *   `resolution_x` (int): The horizontal resolution of the rendered image in pixels.
+    *   `resolution_y` (int): The vertical resolution of the rendered image in pixels.
+    *   `use_denoising` (bool): Whether to apply denoising to the rendered image.
+    *   `use_persistent_data` (bool): Whether to keep render data in memory for faster subsequent renders.
+    *   `use_save_buffers` (bool): Whether to save render buffers.
+    *   `samples` (int): The number of render samples (quality setting). Higher values result in better quality but longer render times.
+    *   `use_spatial_splits` (bool): Whether to use spatial splits for rendering.
+    *   `max_bounces` (int): The maximum number of light bounces for ray tracing.
+    *   `min_bounces` (int): The minimum number of light bounces for ray tracing.
+    *   `use_caustics_reflective` (bool): Whether to enable reflective caustics.
+    *   `use_caustics_refractive` (bool): Whether to enable refractive caustics.
+
+2.  **`camera_parameters`**: This dictionary contains settings for the camera.
+    *   `focal_length` (int): The focal length of the camera in millimeters.
+    *   `sensor_height` (int): The height of the camera sensor in millimeters.
+    *   `sensor_width` (int): The width of the camera sensor in millimeters.
+
+Here is the default value of `init_dict`
+
+```python
+init_dict = {
+    "render_parameters": {
+        "render_tile_x": 112,
+        "render_tile_y": 112,
+        "resolution_x": 1024,
+        "resolution_y": 1024,
+        "use_denoising": True,
+        "use_persistent_data": True,
+        "use_save_buffers": True,
+        "samples": 256,
+        "use_spatial_splits": True,
+        "max_bounces": 10,
+        "min_bounces": 2,
+        "use_caustics_reflective": True,
+        "use_caustics_refractive": True
+    },
+    "camera_parameters": {
+        "focal_length": 30,
+        "sensor_height": 36,
+        "sensor_width": 36
+    }
+}
+```
