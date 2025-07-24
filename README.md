@@ -285,7 +285,7 @@ def create_render_json(
     *   `'obj_name'` (str): A unique name for the object, e.g., "id0".
     *   `'obj_path'` (str): Absolute path to the `.obj` file of the 3D model, e.g., "assets/mesh/0.obj".
     *   `'transform'` (list, optional): A 4x4 transformation matrix (list of lists) to apply to the object, e.g., `np.eye(4,4).tolist()`. If `None`, an identity matrix is used.
-    *   `'mat_path'` (str, optional): Absolute path to the PBR material directory for the object, e.g., "". If `None`, no material is applied.
+    *   `'mat_path'` (str, optional): Absolute path to the PBR material directory for the object, If `None`, no material is applied.
     *   `'obj_seg_label'` (int, optional): An integer label used for segmentation rendering, e.g., 1.
     *   `'is_visible'` (bool, optional): A boolean indicating whether the object should be visible in the render. Defaults to `True` if not specified.
 *   `visible_target_ids` (list, optional): A list of `obj_name` strings. If provided, then the camera will be choosen such that the objects with visible_target_ids are clearly visible with minimal occlusion. `visibility_check_enabled` needs to be True for this to work.
