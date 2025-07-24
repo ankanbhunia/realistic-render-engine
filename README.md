@@ -1,6 +1,6 @@
 # Blender Render Engine Documentation
 
-## 3. Installation
+## 1. Installation
 
 To set up the rendering environment, follow these steps:
 
@@ -42,7 +42,7 @@ To set up the rendering environment, follow these steps:
     └── DOCUMENTATION.md (this file)
     ```
 
-## 4. Usage
+## 2. Usage
 
 The core rendering functionalities are encapsulated within the `render_func.py` module. These functions allow programmatic control over the rendering process.
 
