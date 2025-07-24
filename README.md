@@ -6,7 +6,7 @@ To set up the rendering environment, follow these steps:
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/your-username/Blender-Render-Engine.git
+    git clone https://github.com/ankanbhunia/realistic-render-engine.git
     cd Blender-Render-Engine
     ```
 
@@ -75,79 +75,6 @@ obj_list = [{
         'obj_name': "id0",
         'obj_path': "assets/mesh/0.obj",
         'transform': np.eye(4,4).tolist(),
-        'mat_path' : "",
-        'obj_seg_label': 1,
-        }, {
-        'obj_name': "id1",
-        'obj_path': "assets/mesh/1.obj",
-        'transform': np.eye(4,4).tolist(),
-        'mat_path' : "",
-        'obj_seg_label': 2,
-        }]
-
-with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.json', dir='/tmp') as temp_file:
-    temp_config_file_path = temp_file.name
-    json_data = render_func.create_render_json(
-            obj_list=obj_list,
-            visible_target_ids=['id0'],
-            camera_target_ids=None,
-            env_hdr_path="assets/hdr_envs/anniversary_lounge_4k.hdr",
-            bg_pbr_path="",
-            global_pose=None,
-            camera_search_space=30,
-            visibility_check_enabled=True,
-            num_views = 4,
-            azimuth_range=(0, 360),
-            distance_multiplier=(2.0, 2.1),
-            elevation_range = (10, 60),
-            seed = random_seed
-        )
-
-    with open(temp_config_file_path, 'w') as f:
-        json.dump(json_data, f, indent=4)
-
-print(f"Generated JSON configuration at: {temp_config_file_path}")
-
-render_func.render_photorealistic_object_with_blender(
-        input_json=temp_config_file_path,
-        output_path=f"output",
-    )
-```
-
-### `render_func.render_untextured_object_with_blender`
-
-This function renders 3D objects without textures from multiple camera angles. It supports different output modes such as lineart, textureless, and depth maps. Each mode is rendered in a separate Blender process for isolation.
-
-**Function Signature:**
-```python
-def render_untextured_object_with_blender(
-    input_json: str,
-    output_path: str,
-    mode: list[str] = ['lineart']
-)
-```
-
-**Parameters:**
-*   `input_json` (str): Absolute path to the input JSON file containing object data. This JSON should define the objects to be rendered, similar to the structure expected by `create_render_json`.
-*   `output_path` (str): Base directory where rendered images for each mode will be saved.
-*   `mode` (list[str]): A list of rendering modes to generate. Supported modes are:
-    *   `'lineart'`: Renders the object with outlines.
-    *   `'textureless'`: Renders the object with flat shading, no textures.
-    *   `'depth'`: Renders a depth map of the scene.
-    The default mode is `['lineart']`.
-
-**Example Usage:**
-```python
-import tempfile, json
-import numpy as np
-import render_func
-
-random_seed = 1000
-
-obj_list = [{
-        'obj_name': "id0",
-        'obj_path': "assets/mesh/0.obj",
-        'transform': np.eye(4,4).tolist(),
         'mat_path' : "assets/pbr_materials/acg_granite_005_a",
         'obj_seg_label': 1,
         }, {
@@ -186,8 +113,86 @@ render_func.render_photorealistic_object_with_blender(
         output_path=f"output",
     )
 ```
+**Output:**
+![preview](./figures/photo.png)
 
-### `render_func.render_segmentation_object_with_blender`
+### `render_func.render_untextured_object_with_blender`
+
+This function renders 3D objects without textures from multiple camera angles. It supports different output modes such as lineart, textureless, and depth maps. Each mode is rendered in a separate Blender process for isolation.
+
+**Function Signature:**
+```python
+def render_untextured_object_with_blender(
+    input_json: str,
+    output_path: str,
+    mode: list[str] = ['lineart']
+)
+```
+
+**Parameters:**
+*   `input_json` (str): Absolute path to the input JSON file containing object data. This JSON should define the objects to be rendered, similar to the structure expected by `create_render_json`.
+*   `output_path` (str): Base directory where rendered images for each mode will be saved.
+*   `mode` (list[str]): A list of rendering modes to generate. Supported modes are:
+    *   `'lineart'`: Renders the object with outlines.
+    *   `'textureless'`: Renders the object with flat shading, no textures.
+    *   `'depth'`: Renders a depth map of the scene.
+    The default mode is `['lineart']`.
+
+**Example Usage:**
+```python
+import tempfile, json
+import numpy as np
+import render_func
+
+random_seed = 1000
+
+obj_list = [{
+        'obj_name': "id0",
+        'obj_path': "assets/mesh/0.obj",
+        'transform': np.eye(4,4).tolist(),
+        'obj_seg_label': 1,
+        }, {
+        'obj_name': "id1",
+        'obj_path': "assets/mesh/1.obj",
+        'transform': np.eye(4,4).tolist(),
+        'obj_seg_label': 2,
+        }]
+
+with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.json', dir='/tmp') as temp_file:
+    temp_config_file_path = temp_file.name
+    json_data = render_func.create_render_json(
+            obj_list=obj_list,
+            visible_target_ids=['id0'],
+            camera_target_ids=None,
+            global_pose=None,
+            camera_search_space=30,
+            visibility_check_enabled=True,
+            num_views = 4,
+            azimuth_range=(0, 360),
+            distance_multiplier=(2.0, 2.1),
+            elevation_range = (10, 60),
+            seed = random_seed
+        )
+
+    with open(temp_config_file_path, 'w') as f:
+        json.dump(json_data, f, indent=4)
+
+print(f"Generated JSON configuration at: {temp_config_file_path}")
+
+render_func.render_untextured_object_with_blender(
+        input_json=temp_config_file_path,
+        output_path=f"output",
+        mode=['lineart', 'textureless', 'depth']
+    )
+```
+
+**Output:**
+![preview](./figures/lineart.png)
+![preview](./figures/mesh.png)
+![preview](./figures/depth.png)
+
+
+#### `render_func.render_segmentation_object_with_blender`
 
 This function renders objects with segmentation masks. It expects an input JSON file that defines the objects and their segmentation labels.
 
@@ -246,6 +251,9 @@ render_func.render_segmentation_object_with_blender(
     )
 
 ```
+**Output:**
+![preview](./figures/seg.png)
+
 ### `render_func.create_render_json`
 
 This function is responsible for constructing a comprehensive JSON configuration dictionary. This dictionary serves as the primary input for the photorealistic rendering function, defining all necessary parameters for the scene, objects, and camera.
