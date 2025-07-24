@@ -3,12 +3,17 @@ channels:
   - defaults
 dependencies:
   - python=3.10
-  - numpy
-  - scikit-image
-  - scipy
-  - scikit-learn
-  - open3d
-  - pip
   - pip:
+    - numpy
+    - tetgen
+    - scikit-image
+    - polyscope
+    - scipy
+    - gpytoolbox==0.0.1
     - trimesh[all]
+    - connected-components-3d
+    - pymeshfix 
+    - scikit-learn 
+    - open3d 
+    - bounding_box
     - https://files.pythonhosted.org/packages/9c/f3/732e7c6d6c0932b80df488a24e02ac34e8eae14a3c893eb97dcbf6e9c93c/bpy-3.4.0-cp310-cp310-manylinux_2_17_x86_64.whl
