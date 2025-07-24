@@ -258,7 +258,7 @@ render_func.render_segmentation_object_with_blender(
 
 ### `render_func.create_render_json`
 
-This function is responsible for constructing a comprehensive JSON configuration dictionary. This dictionary serves as the primary input for the photorealistic rendering function, defining all necessary parameters for the scene, objects, and camera.
+This function is responsible for constructing a JSON configuration dictionary. This dictionary serves as the primary input for the photorealistic rendering function, defining all necessary parameters for the scene, objects, and camera.
 
 **Function Signature:**
 ```python
@@ -288,14 +288,14 @@ def create_render_json(
     *   `'mat_path'` (str, optional): Absolute path to the PBR material directory for the object, e.g., "". If `None`, no material is applied.
     *   `'obj_seg_label'` (int, optional): An integer label used for segmentation rendering, e.g., 1.
     *   `'is_visible'` (bool, optional): A boolean indicating whether the object should be visible in the render. Defaults to `True` if not specified.
-*   `visible_target_ids` (list, optional): A list of `obj_name` strings. If provided, only objects with these IDs will be visible in the render.
+*   `visible_target_ids` (list, optional): A list of `obj_name` strings. If provided, then the camera will be choosen such that the objects with visible_target_ids are clearly visible with minimal occlusion. `visibility_check_enabled` needs to be True for this to work.
 *   `camera_target_ids` (list, optional): A list of `obj_name` strings. If provided, the camera will be focused on the bounding box center of these objects. If `None`, the camera focuses on the entire scene's bounding box.
 *   `global_pose` (list, optional): A 4x4 transformation matrix (list of lists) to apply globally to the entire scene.
-*   `env_hdr_path` (str, optional): Absolute path to the environment HDR (High Dynamic Range) image file for lighting the scene.
-*   `bg_pbr_path` (str, optional): Absolute path to a PBR material directory to be used as the background.
+*   `env_hdr_path` (str, optional): Absolute path to the environment HDR image file for lighting the scene. 
+*   `bg_pbr_path` (str, optional): Absolute path to a PBR material directory to be used as the background. 
 *   `num_views` (int): The total number of camera views to generate for the rendering.
-*   `camera_search_space` (int): Defines the search space for camera placement.
-*   `visibility_check_enabled` (bool): If `True`, performs a visibility check to ensure the target objects are visible from the generated camera positions.
+*   `camera_search_space` (int, optional): Defines the search space for camera placement. This is needed for visibilty check. 
+*   `visibility_check_enabled` (bool, optional): If `True`, performs a visibility check to ensure the `visible_target_ids` objects are visible from the generated camera positions.
 *   `azimuth_range` (tuple): A tuple `(min_azimuth_deg, max_azimuth_deg)` specifying the range of azimuth angles (in degrees) for camera sampling.
 *   `elevation_range` (tuple): A tuple `(min_elevation_deg, max_elevation_deg)` specifying the range of elevation angles (in degrees) for camera sampling.
 *   `distance_multiplier` (tuple): A tuple `(min_multiplier, max_multiplier)` used to scale the camera distance from the target. The actual distance is calculated based on the target's bounding box.
